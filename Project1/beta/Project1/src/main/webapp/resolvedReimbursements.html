@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel= "stylesheet" href="style.css">
+<meta charset="ISO-8859-1">
+<title>resolvedReimbursements</title>
+</head>
+<script>
+function resolvedReimbursements() {
+	let xhttp = new XMLHttpRequest();
+	
+	xhttp.onreadystatechange = function() {
+		console.log(this.readyState);
+		if(xhttp.readyState === 4 && xhttp.status === 200) {
+			document.getElementById("table").innerHTML = xhttp.responseText;
+		}
+	}
+	
+	xhttp.open("POST", "UserResolvedReimbursements", true);
+	xhttp.send();
+}
+</script>
+<body onload="resolvedReimbursements()">
+	<header>
+		<div>
+			<div>
+				<h1>
+					Welcome to the Employee Reimbursement System
+				</h1>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="employeeHomepage.html">Home</a></li>
+					<li><a href="submitRequest.html">Submit Reimbursement Request</a></li>
+					<li><a href="pendingReimbursements.html">Pending Reimbursements</a></li>
+					<li><a href="resolvedReimbursements.html">Resolved Reimbursements</a></li>
+					<li><a href="profile.html">My Profile</a></li>
+					<li><a href="index.html">Logout</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	</br>
+	<table>
+		<tr>
+			<td id = "table">Amount</td>
+			<td>Description<td>
+			<td>Time Submitted</td>
+			<td>Time Resolved</td>
+			<td>Resolver</td>
+			<td>Type</td>
+			<td>Status</td>
+		</tr>
+	</table>
+</body>
+</html>
